@@ -1,5 +1,6 @@
 package br.com.rafaelb.bankaccount.application.dto.request;
 
+import br.com.rafaelb.bankaccount.infrastructure.validation.CPF;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -20,6 +21,7 @@ public record CreateAccountRequest(
         @Schema(description = "O cpf/cpnj do titular da conta.", example = "012.123.456-30")
         @NotBlank
         @Size(min = 11, max = 14)
+        @CPF
         String holderDocument
 
 ) {}
