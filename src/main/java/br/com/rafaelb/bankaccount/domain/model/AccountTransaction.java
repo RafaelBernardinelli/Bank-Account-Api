@@ -57,7 +57,7 @@ public class AccountTransaction {
         Objects.requireNonNull(amount, "Amount must not be null");
 
         if (amount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new InvalidAmountException();
+            throw new InvalidAmountException("The transaction value must be greater than 0.");
         }
 
         AccountTransaction transaction = new AccountTransaction();

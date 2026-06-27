@@ -1,0 +1,47 @@
+package br.com.rafaelb.bankaccount.domain.repository;
+
+import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
+import br.com.rafaelb.bankaccount.domain.model.Account;
+import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.time.Instant;
+import java.util.List;
+import java.util.UUID;
+
+@Repository
+public interface AccountTransactionRepository extends JpaRepository<AccountTransaction, Long> {
+
+    Page<AccountTransaction> findByAccountId(
+            Long accountId,
+            Pageable pageable
+    );
+
+    Page<AccountTransaction> findByAccountIdAndTransactionType(
+            Long accountId,
+            TransactionType transactionType,
+            Pageable pageable
+    );
+
+    Page<AccountTransaction> findByAccountIdAndCreatedAtBetween(
+            Long accountId,
+            Instant startDate,
+            Instant endDate,
+            Pageable pageable
+    );
+
+    Page<AccountTransaction> findByAccountIdAndCreatedAtBetweenAndTransactionType(
+            Long accountId,
+            Instant startDate,
+            Instant endDate,
+            TransactionType transactionType,
+            Pageable pageable
+    );
+
+    List<AccountTransaction> findByOperationIdOrderByCreatedAtAsc(UUID operationId);
+
+    Page<AccountTransaction> findByAccount(Account account, Pageable pageable);
+}

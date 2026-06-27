@@ -66,7 +66,7 @@ public class Account {
         return account;
     }
 
-    public void deposit(BigDecimal amount) throws InvalidAmountException {
+    public void deposit(BigDecimal amount) {
 
         validateAmount(amount);
 
@@ -74,12 +74,12 @@ public class Account {
 
     }
 
-    public void withdraw(BigDecimal amount) throws InsufficientFundsException, InvalidAmountException {
+    public void withdraw(BigDecimal amount) {
 
         validateAmount(amount);
 
         if (!hasEnoughBalance(amount)) {
-            throw new InsufficientFundsException();
+            throw new InsufficientFundsException("Insufficient funds for this transaction.");
         }
 
         this.balance = this.balance.subtract(amount);
@@ -92,10 +92,10 @@ public class Account {
 
     }
 
-    private void validateAmount(BigDecimal amount) throws InvalidAmountException {
+    private void validateAmount(BigDecimal amount) {
 
         if (amount == null || amount.compareTo(BigDecimal.ZERO) <= 0) {
-            throw new InvalidAmountException();
+            throw new InvalidAmountException("The transaction value must be greater than 0.");
         }
 
     }
