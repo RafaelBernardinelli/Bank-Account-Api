@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.exception;
+package br.com.rafaelb.bankaccount.infrastructure.exception;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonInclude;

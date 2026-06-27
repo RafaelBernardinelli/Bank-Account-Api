@@ -2,19 +2,15 @@ package br.com.rafaelb.bankaccount.application.dto.response;
 
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import io.swagger.v3.oas.annotations.media.Schema;
+import lombok.Builder;
 
 import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.UUID;
 
+@Builder
 @Schema(description = "Objeto de resposta para informações de uma transação bancária.")
 public record TransactionResponse(
-
-        @Schema(description = "ID da transação.", example = "1")
-        Long id,
-
-        @Schema(description = "ID da conta associada à transação.", example = "1")
-        Long accountId,
 
         @Schema(description = "Tipo de transação (DEPOSIT, WITHDRAWAL, TRANSFER).", example = "DEPOSIT")
         TransactionType transactionType,

@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.exception;
+package br.com.rafaelb.bankaccount.infrastructure.exception;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
