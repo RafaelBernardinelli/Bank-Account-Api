@@ -82,7 +82,7 @@ src/main/java
 
 ---
 
-# Arquitetura da Aplicação
+# Arquitetura do sistema
 
 ```mermaid
 flowchart TD
@@ -149,39 +149,6 @@ flowchart TD
 
 ---
 
-# Modelo do Banco
-
-```mermaid
-erDiagram
-	direction TB
-	ACCOUNT {
-		long id PK ""  
-		varchar account_number  ""  
-		varchar account_digit  ""  
-		varchar holder_document  ""  
-		decimal balance  ""  
-		varchar status  ""  
-		timestamp created_at  ""  
-		timestamp updated_at  ""  
-		long version  ""  
-	}
-
-	ACCOUNT_TRANSACTION {
-		long id PK ""  
-		long account_id FK ""  
-		varchar transaction_type  ""  
-		decimal amount  ""  
-		decimal balance_after  ""  
-		uuid operation_id  ""  
-		varchar description  ""  
-		timestamp created_at  ""  
-	}
-
-	ACCOUNT||--o{ACCOUNT_TRANSACTION:"possui"
-```
-
----
-
 # Decisões Arquiteturais
 
 ## Clean Architecture Simplificada
@@ -225,15 +192,38 @@ Essa organização facilita testes unitários, manutenção e futuras evoluçõe
 
 ---
 
-## Persistência
+# Modelo do Banco
 
-Foi adotado o padrão Repository utilizando Spring Data JPA.
+```mermaid
+erDiagram
+	direction TB
+	ACCOUNT {
+		long id PK ""  
+		varchar account_number  ""  
+		varchar account_digit  ""  
+		varchar holder_document  ""  
+		decimal balance  ""  
+		varchar status  ""  
+		timestamp created_at  ""  
+		timestamp updated_at  ""  
+		long version  ""  
+	}
 
-Os repositórios abstraem o acesso aos dados, mantendo os casos de uso desacoplados da tecnologia de persistência.
+	ACCOUNT_TRANSACTION {
+		long id PK ""  
+		long account_id FK ""  
+		varchar transaction_type  ""  
+		decimal amount  ""  
+		decimal balance_after  ""  
+		uuid operation_id  ""  
+		varchar description  ""  
+		timestamp created_at  ""  
+	}
+
+	ACCOUNT||--o{ACCOUNT_TRANSACTION:"possui"
+```
 
 ---
-
-## Modelagem do Banco
 
 A solução utiliza apenas duas tabelas:
 
@@ -266,6 +256,14 @@ Contém informações como:
 - id da operação
 - descrição opcional de uma transação
 - data de criação
+
+---
+
+## Persistência
+
+Foi adotado o padrão Repository utilizando Spring Data JPA.
+
+Os repositórios abstraem o acesso aos dados, mantendo os casos de uso desacoplados da tecnologia de persistência.
 
 ---
 
