@@ -1,8 +1,8 @@
 package br.com.rafaelb.bankaccount.domain;
 
+import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
 import br.com.rafaelb.bankaccount.domain.enums.AccountStatus;
 import br.com.rafaelb.bankaccount.domain.model.Account;
-import br.com.rafaelb.bankaccount.domain.repository.AccountRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,12 +1,11 @@
 package br.com.rafaelb.bankaccount.application;
 
 import br.com.rafaelb.bankaccount.application.exception.InvalidDateRangeException;
+import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
+import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.application.usecase.GetStatementUseCase;
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
-import br.com.rafaelb.bankaccount.domain.repository.AccountRepository;
-import br.com.rafaelb.bankaccount.domain.repository.AccountTransactionRepository;
-import lombok.RequiredArgsConstructor;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

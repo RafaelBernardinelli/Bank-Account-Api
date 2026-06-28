@@ -50,7 +50,7 @@ public class AccountTransaction {
             TransactionType transactionType,
             BigDecimal amount,
             UUID operationId,
-            String description) throws InvalidAmountException {
+            String description) {
 
         Objects.requireNonNull(account, "Account must not be null");
         Objects.requireNonNull(transactionType, "Transaction type must not be null");

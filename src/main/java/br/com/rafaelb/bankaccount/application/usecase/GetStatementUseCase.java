@@ -1,15 +1,15 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
-import br.com.rafaelb.bankaccount.application.dto.response.PaginatedResponse;
-import br.com.rafaelb.bankaccount.application.dto.response.StatementResponse;
-import br.com.rafaelb.bankaccount.application.dto.response.TransactionResponse;
+import br.com.rafaelb.bankaccount.presentation.response.PaginatedResponse;
+import br.com.rafaelb.bankaccount.presentation.response.StatementResponse;
+import br.com.rafaelb.bankaccount.presentation.response.TransactionResponse;
 import br.com.rafaelb.bankaccount.application.exception.AccountNotFoundException;
 import br.com.rafaelb.bankaccount.application.exception.InvalidDateRangeException;
 import br.com.rafaelb.bankaccount.application.mapper.AccountTransactionMapper;
+import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
+import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
-import br.com.rafaelb.bankaccount.domain.repository.AccountRepository;
-import br.com.rafaelb.bankaccount.domain.repository.AccountTransactionRepository;
 import org.springframework.transaction.annotation.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

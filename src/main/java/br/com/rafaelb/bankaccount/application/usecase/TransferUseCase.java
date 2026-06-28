@@ -1,19 +1,17 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
-import br.com.rafaelb.bankaccount.application.dto.request.TransferRequest;
-import br.com.rafaelb.bankaccount.application.dto.response.OperationResponse;
+import br.com.rafaelb.bankaccount.presentation.request.TransferRequest;
 import br.com.rafaelb.bankaccount.application.exception.AccountNotFoundException;
 import br.com.rafaelb.bankaccount.application.exception.InvalidTransferException;
+import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
+import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
-import br.com.rafaelb.bankaccount.domain.repository.AccountRepository;
-import br.com.rafaelb.bankaccount.domain.repository.AccountTransactionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
@@ -24,7 +22,8 @@ public class TransferUseCase {
     private final AccountTransactionRepository transactionRepository;
 
     @Transactional
-    public OperationResponse execute(TransferRequest request) {
+    public void execute(UUID operationId, TransferRequest request) {
+
         validateTransfer(request);
 
         Account origin = accountRepository.findByIdForUpdate(request.fromAccountId())
@@ -37,8 +36,6 @@ public class TransferUseCase {
 
         origin.withdraw(request.amount());
         destination.deposit(request.amount());
-
-        UUID operationId = UUID.randomUUID();
 
         AccountTransaction transactionOut = AccountTransaction.create(
                 origin,
@@ -58,12 +55,6 @@ public class TransferUseCase {
 
         transactionRepository.save(transactionOut);
         transactionRepository.save(transactionIn);
-
-        return OperationResponse.builder()
-                .operationId(operationId)
-                .balance(origin.getBalance())
-                .message("Transfer completed successfully.")
-                .build();
     }
 
     private void validateTransfer(TransferRequest request) {

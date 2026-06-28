@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.application.mapper;
 
-import br.com.rafaelb.bankaccount.application.dto.response.TransactionResponse;
+import br.com.rafaelb.bankaccount.presentation.response.TransactionResponse;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
 import org.springframework.stereotype.Component;
 

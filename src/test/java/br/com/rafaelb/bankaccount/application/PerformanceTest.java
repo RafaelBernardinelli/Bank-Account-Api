@@ -1,12 +1,12 @@
 package br.com.rafaelb.bankaccount.application;
 
-import br.com.rafaelb.bankaccount.application.dto.request.WithdrawRequest;
+import br.com.rafaelb.bankaccount.presentation.request.WithdrawRequest;
+import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
+import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.application.usecase.WithdrawUseCase;
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
-import br.com.rafaelb.bankaccount.domain.repository.AccountRepository;
-import br.com.rafaelb.bankaccount.domain.repository.AccountTransactionRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -82,11 +82,12 @@ public class PerformanceTest {
 
     @Test
     void shouldRollbackOnFailure() {
+        UUID operationId = UUID.randomUUID();
 
         Account account = accountRepository.save(Account.create("118", "01", "1238"));
 
         assertThrows(RuntimeException.class, () -> {
-            withdrawUseCase.execute(new WithdrawRequest(account.getId(), new BigDecimal("9999")));
+            withdrawUseCase.execute(operationId, new WithdrawRequest(account.getId(), new BigDecimal("9999")));
         });
 
         Account updated = accountRepository.findById(account.getId()).orElseThrow();
@@ -96,6 +97,7 @@ public class PerformanceTest {
 
     @Test
     void shouldHandleHighConcurrency() throws Exception {
+        UUID operationId = UUID.randomUUID();
 
         Account account = accountRepository.save(Account.create("119", "01", "1239"));
         account.deposit(new BigDecimal("1000"));
@@ -107,7 +109,7 @@ public class PerformanceTest {
 
         for (int i = 0; i < 50; i++) {
             tasks.add(() -> {
-                withdrawUseCase.execute(new WithdrawRequest(account.getId(), new BigDecimal("10")));
+                withdrawUseCase.execute(operationId, new WithdrawRequest(account.getId(), new BigDecimal("10")));
                 return null;
             });
         }
