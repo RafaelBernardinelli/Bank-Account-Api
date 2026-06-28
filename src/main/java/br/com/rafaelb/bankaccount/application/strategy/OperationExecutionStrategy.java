@@ -1,15 +1,16 @@
 package br.com.rafaelb.bankaccount.application.strategy;
 
-import br.com.rafaelb.bankaccount.application.dto.request.DepositRequest;
-import br.com.rafaelb.bankaccount.application.dto.request.TransferRequest;
-import br.com.rafaelb.bankaccount.application.dto.request.WithdrawRequest;
+import br.com.rafaelb.bankaccount.presentation.request.DepositRequest;
+import br.com.rafaelb.bankaccount.presentation.request.TransferRequest;
+import br.com.rafaelb.bankaccount.presentation.request.WithdrawRequest;
+import br.com.rafaelb.bankaccount.presentation.response.OperationResponse;
 
 public interface OperationExecutionStrategy {
 
-    void deposit(DepositRequest request);
+    OperationResponse deposit(DepositRequest request);
 
-    void withdraw(WithdrawRequest request);
+    OperationResponse withdraw(WithdrawRequest request);
 
-    void transfer(TransferRequest request);
+    OperationResponse transfer(TransferRequest request);
 
 }

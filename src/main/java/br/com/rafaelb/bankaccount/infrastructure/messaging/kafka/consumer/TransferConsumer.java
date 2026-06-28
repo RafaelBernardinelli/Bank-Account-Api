@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.infrastructure.messaging.kafka.consumer;
 
-import br.com.rafaelb.bankaccount.application.dto.request.TransferRequest;
+import br.com.rafaelb.bankaccount.presentation.request.TransferRequest;
 import br.com.rafaelb.bankaccount.application.event.TransferRequested;
 import br.com.rafaelb.bankaccount.application.usecase.TransferUseCase;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class TransferConsumer {
     public void consume(TransferRequested event) {
         log.info("Received transfer event: {}", event);
 
-        transferUseCase.execute(new TransferRequest(event.getSourceAccountId(), event.getDestinationAccountId(), event.getAmount()));
+        transferUseCase.execute(event.getOperationId(), new TransferRequest(event.getSourceAccountId(), event.getDestinationAccountId(), event.getAmount()));
     }
 
 }

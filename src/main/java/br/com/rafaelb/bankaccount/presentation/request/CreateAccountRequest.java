@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.application.dto.request;
+package br.com.rafaelb.bankaccount.presentation.request;
 
 import br.com.rafaelb.bankaccount.infrastructure.validation.CPF;
 import io.swagger.v3.oas.annotations.media.Schema;

@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.application.dto.response;
+package br.com.rafaelb.bankaccount.presentation.response;
 
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import io.swagger.v3.oas.annotations.media.Schema;

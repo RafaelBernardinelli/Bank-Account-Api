@@ -1,9 +1,8 @@
 package br.com.rafaelb.bankaccount.infrastructure.messaging.kafka.consumer;
 
-import br.com.rafaelb.bankaccount.application.dto.request.DepositRequest;
+import br.com.rafaelb.bankaccount.presentation.request.DepositRequest;
 import br.com.rafaelb.bankaccount.application.event.DepositRequested;
 import br.com.rafaelb.bankaccount.application.usecase.DepositUseCase;
-import br.com.rafaelb.bankaccount.infrastructure.messaging.kafka.handler.DepositEventHandler;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
@@ -23,7 +22,7 @@ public class DepositConsumer {
     public void consume(DepositRequested event) {
         log.info("Received deposit event: {}", event);
 
-        depositUseCase.execute(new DepositRequest(event.getAccountId(), event.getAmount()));
+        depositUseCase.execute(event.getOperationId(), new DepositRequest(event.getAccountId(), event.getAmount()));
     }
 
 }

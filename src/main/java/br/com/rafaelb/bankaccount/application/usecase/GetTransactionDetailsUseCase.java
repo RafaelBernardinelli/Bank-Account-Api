@@ -1,7 +1,7 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
-import br.com.rafaelb.bankaccount.application.dto.response.OperationReceiptResponse;
-import br.com.rafaelb.bankaccount.application.dto.response.TransactionResponse;
+import br.com.rafaelb.bankaccount.presentation.response.TransactionDetailsResponse;
+import br.com.rafaelb.bankaccount.presentation.response.TransactionResponse;
 import br.com.rafaelb.bankaccount.application.exception.OperationNotFoundException;
 import br.com.rafaelb.bankaccount.application.mapper.AccountTransactionMapper;
 import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
@@ -17,13 +17,13 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class GetOperationReceiptUseCase {
+public class GetTransactionDetailsUseCase {
 
     private final AccountTransactionRepository transactionRepository;
     private final AccountTransactionMapper accountTransactionMapper;
 
     @Transactional(readOnly = true)
-    public OperationReceiptResponse execute(UUID operationId) {
+    public TransactionDetailsResponse execute(UUID operationId) {
 
         List<AccountTransaction> transactions =
                 transactionRepository.findByOperationIdOrderByCreatedAtAsc(operationId);
@@ -43,7 +43,7 @@ public class GetOperationReceiptUseCase {
                 .map(AccountTransaction::getAmount)
                 .reduce(BigDecimal.ZERO, BigDecimal::add);
 
-        return OperationReceiptResponse.builder()
+        return TransactionDetailsResponse.builder()
                 .operationId(operationId)
                 .operationType(type)
                 .totalAmount(totalAmount)

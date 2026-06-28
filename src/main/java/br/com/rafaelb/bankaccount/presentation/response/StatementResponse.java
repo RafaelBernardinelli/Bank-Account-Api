@@ -1,10 +1,9 @@
-package br.com.rafaelb.bankaccount.application.dto.response;
+package br.com.rafaelb.bankaccount.presentation.response;
 
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Builder;
 
 import java.math.BigDecimal;
-import java.util.List;
 
 @Builder
 @Schema(description = "Objeto de resposta para extrato bancário de uma conta.")

@@ -16,7 +16,7 @@ public class StrategyConfiguration {
     public OperationExecutionStrategy operationExecutionStrategy(
             SyncOperationExecutionStrategy syncStrategy,
             KafkaOperationExecutionStrategy kafkaStrategy,
-            @Value("${bank.operation.mode:kafka}") String mode) {
+            @Value("${bank.operation.mode}") String mode) {
 
         return switch (mode.toLowerCase()) {
             case "kafka" -> kafkaStrategy;

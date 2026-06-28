@@ -1,8 +1,8 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
-import br.com.rafaelb.bankaccount.application.dto.response.PaginatedResponse;
-import br.com.rafaelb.bankaccount.application.dto.response.StatementResponse;
-import br.com.rafaelb.bankaccount.application.dto.response.TransactionResponse;
+import br.com.rafaelb.bankaccount.presentation.response.PaginatedResponse;
+import br.com.rafaelb.bankaccount.presentation.response.StatementResponse;
+import br.com.rafaelb.bankaccount.presentation.response.TransactionResponse;
 import br.com.rafaelb.bankaccount.application.exception.AccountNotFoundException;
 import br.com.rafaelb.bankaccount.application.exception.InvalidDateRangeException;
 import br.com.rafaelb.bankaccount.application.mapper.AccountTransactionMapper;

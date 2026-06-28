@@ -1,9 +1,10 @@
-package br.com.rafaelb.bankaccount.infrastructure.persistence;
+package br.com.rafaelb.bankaccount.infrastructure.persistence.adapter;
 
 import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
+import br.com.rafaelb.bankaccount.infrastructure.persistence.repository.JpaAccountTransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

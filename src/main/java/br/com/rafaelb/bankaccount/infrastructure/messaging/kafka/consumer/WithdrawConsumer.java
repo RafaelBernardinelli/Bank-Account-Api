@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.infrastructure.messaging.kafka.consumer;
 
-import br.com.rafaelb.bankaccount.application.dto.request.WithdrawRequest;
+import br.com.rafaelb.bankaccount.presentation.request.WithdrawRequest;
 import br.com.rafaelb.bankaccount.application.event.WithdrawRequested;
 import br.com.rafaelb.bankaccount.application.usecase.WithdrawUseCase;
 import lombok.RequiredArgsConstructor;
@@ -22,7 +22,7 @@ public class WithdrawConsumer {
     public void consume(WithdrawRequested event) {
         log.info("Received withdraw event: {}", event);
 
-        withdrawUseCase.execute(new WithdrawRequest(event.getAccountId(), event.getAmount()));
+        withdrawUseCase.execute(event.getOperationId(), new WithdrawRequest(event.getAccountId(), event.getAmount()));
     }
 
 }

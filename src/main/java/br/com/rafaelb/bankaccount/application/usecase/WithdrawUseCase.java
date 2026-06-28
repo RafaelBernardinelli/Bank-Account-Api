@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
-import br.com.rafaelb.bankaccount.application.dto.request.WithdrawRequest;
+import br.com.rafaelb.bankaccount.presentation.request.WithdrawRequest;
 import br.com.rafaelb.bankaccount.application.exception.AccountNotFoundException;
 import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
 import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
@@ -21,20 +21,18 @@ public class WithdrawUseCase {
     private final AccountTransactionRepository transactionRepository;
 
     @Transactional
-    public void execute(WithdrawRequest request) {
+    public void execute(UUID operationId, WithdrawRequest request) {
 
         Account account = accountRepository.findByIdForUpdate(request.accountId())
                 .orElseThrow(() -> new AccountNotFoundException("Account not found."));
 
         account.withdraw(request.amount());
 
-        UUID operationID = UUID.randomUUID();
-
         AccountTransaction accountTransaction = AccountTransaction.create(
                 account,
                 TransactionType.WITHDRAW,
                 request.amount(),
-                operationID,
+                operationId,
                 "Withdrawal"
         );
 

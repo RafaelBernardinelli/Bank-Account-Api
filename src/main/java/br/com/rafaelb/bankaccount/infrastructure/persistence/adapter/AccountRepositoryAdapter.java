@@ -1,7 +1,8 @@
-package br.com.rafaelb.bankaccount.infrastructure.persistence;
+package br.com.rafaelb.bankaccount.infrastructure.persistence.adapter;
 
 import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
 import br.com.rafaelb.bankaccount.domain.model.Account;
+import br.com.rafaelb.bankaccount.infrastructure.persistence.repository.JpaAccountRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 

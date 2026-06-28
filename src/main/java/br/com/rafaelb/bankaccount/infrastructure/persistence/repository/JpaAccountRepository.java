@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.infrastructure.persistence;
+package br.com.rafaelb.bankaccount.infrastructure.persistence.repository;
 
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import jakarta.persistence.LockModeType;

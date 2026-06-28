@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.application.dto.response;
+package br.com.rafaelb.bankaccount.presentation.response;
 
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import lombok.Builder;
@@ -9,7 +9,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Builder
-public record OperationReceiptResponse(
+public record TransactionDetailsResponse(
 
         UUID operationId,
         TransactionType operationType,

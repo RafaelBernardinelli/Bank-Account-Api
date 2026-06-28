@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.application.dto.response;
+package br.com.rafaelb.bankaccount.presentation.response;
 
 import com.fasterxml.jackson.annotation.JsonInclude;
 import lombok.*;

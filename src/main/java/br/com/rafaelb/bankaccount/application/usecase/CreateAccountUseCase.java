@@ -1,8 +1,8 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
 import br.com.rafaelb.bankaccount.application.mapper.AccountMapper;
-import br.com.rafaelb.bankaccount.application.dto.request.CreateAccountRequest;
-import br.com.rafaelb.bankaccount.application.dto.response.AccountResponse;
+import br.com.rafaelb.bankaccount.presentation.request.CreateAccountRequest;
+import br.com.rafaelb.bankaccount.presentation.response.AccountResponse;
 import br.com.rafaelb.bankaccount.application.exception.DuplicateAccountException;
 import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
 import br.com.rafaelb.bankaccount.domain.model.Account;

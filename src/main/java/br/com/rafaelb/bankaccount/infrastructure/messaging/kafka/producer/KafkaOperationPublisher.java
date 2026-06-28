@@ -51,13 +51,6 @@ public class KafkaOperationPublisher implements OperationPublisher {
 
     private void send(String topic, String key, OperationEvent event) {
 
-        log.info(
-                "Publishing event [{}] to topic [{}] with key [{}]",
-                event.getClass().getSimpleName(),
-                topic,
-                key
-        );
-
         kafkaTemplate.send(topic, key, event)
                 .whenComplete((result, ex) -> {
 

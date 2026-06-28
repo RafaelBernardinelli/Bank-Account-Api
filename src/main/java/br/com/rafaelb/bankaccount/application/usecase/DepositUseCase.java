@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
-import br.com.rafaelb.bankaccount.application.dto.request.DepositRequest;
+import br.com.rafaelb.bankaccount.presentation.request.DepositRequest;
 import br.com.rafaelb.bankaccount.application.exception.AccountNotFoundException;
 import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
 import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
@@ -21,14 +21,12 @@ public class DepositUseCase {
     private final AccountTransactionRepository transactionRepository;
 
     @Transactional
-    public void execute(DepositRequest request) {
+    public void execute(UUID operationId, DepositRequest request) {
 
         Account account = accountRepository.findByIdForUpdate(request.accountId())
                 .orElseThrow(() -> new AccountNotFoundException("Account not found."));
 
         account.deposit(request.amount());
-
-        UUID operationId = UUID.randomUUID();
 
         AccountTransaction transaction = AccountTransaction.create(
                 account,

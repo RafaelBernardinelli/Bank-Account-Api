@@ -1,7 +1,7 @@
-package br.com.rafaelb.bankaccount.controller;
+package br.com.rafaelb.bankaccount.presentation.controller;
 
-import br.com.rafaelb.bankaccount.application.dto.request.CreateAccountRequest;
-import br.com.rafaelb.bankaccount.application.dto.response.AccountResponse;
+import br.com.rafaelb.bankaccount.presentation.request.CreateAccountRequest;
+import br.com.rafaelb.bankaccount.presentation.response.AccountResponse;
 import br.com.rafaelb.bankaccount.application.usecase.CreateAccountUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
@@ -9,7 +9,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
-import br.com.rafaelb.bankaccount.application.dto.request.TransferRequest;
+import br.com.rafaelb.bankaccount.presentation.request.TransferRequest;
 import br.com.rafaelb.bankaccount.application.exception.AccountNotFoundException;
 import br.com.rafaelb.bankaccount.application.exception.InvalidTransferException;
 import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
@@ -22,7 +22,8 @@ public class TransferUseCase {
     private final AccountTransactionRepository transactionRepository;
 
     @Transactional
-    public void execute(TransferRequest request) {
+    public void execute(UUID operationId, TransferRequest request) {
+
         validateTransfer(request);
 
         Account origin = accountRepository.findByIdForUpdate(request.fromAccountId())
@@ -35,8 +36,6 @@ public class TransferUseCase {
 
         origin.withdraw(request.amount());
         destination.deposit(request.amount());
-
-        UUID operationId = UUID.randomUUID();
 
         AccountTransaction transactionOut = AccountTransaction.create(
                 origin,
