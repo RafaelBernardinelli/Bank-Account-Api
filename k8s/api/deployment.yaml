@@ -2,15 +2,21 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: bank-account-api
+  labels:
+    app: bank-account-api
+
 spec:
   replicas: 1
+
   selector:
     matchLabels:
       app: bank-account-api
+
   template:
     metadata:
       labels:
         app: bank-account-api
+
     spec:
       containers:
         - name: api
@@ -21,12 +27,21 @@ spec:
             - containerPort: 8080
 
           env:
+            # DATABASE
             - name: SPRING_DATASOURCE_URL
               value: jdbc:postgresql://postgres:5432/bank
             - name: SPRING_DATASOURCE_USERNAME
               value: postgres
             - name: SPRING_DATASOURCE_PASSWORD
               value: postgres
+
+            # KAFKA (IMPORTANTE)
+            - name: SPRING_KAFKA_BOOTSTRAP_SERVERS
+              value: kafka:9092
+
+            # OPCIONAL (se você usa strategy via property)
+            - name: BANK_OPERATION_MODE
+              value: kafka
 
           resources:
             requests:

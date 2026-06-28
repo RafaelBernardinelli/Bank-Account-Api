@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.domain.repository;
+package br.com.rafaelb.bankaccount.infrastructure.persistence;
 
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import jakarta.persistence.LockModeType;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
 import java.util.Optional;
 
 @Repository
-public interface AccountRepository extends JpaRepository<Account, Long> {
+public interface JpaAccountRepository extends JpaRepository<Account, Long> {
 
     boolean existsByAccountNumberAndAccountDigit(
             String accountNumber,

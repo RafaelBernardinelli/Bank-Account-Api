@@ -8,6 +8,7 @@ import br.com.rafaelb.bankaccount.application.dto.response.OperationReceiptRespo
 import br.com.rafaelb.bankaccount.application.dto.response.OperationResponse;
 import br.com.rafaelb.bankaccount.application.dto.response.StatementResponse;
 import br.com.rafaelb.bankaccount.application.dto.response.TransactionResponse;
+import br.com.rafaelb.bankaccount.application.strategy.OperationExecutionStrategy;
 import br.com.rafaelb.bankaccount.application.usecase.*;
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import io.swagger.v3.oas.annotations.Operation;
@@ -33,9 +34,7 @@ import java.util.UUID;
 @Tag(name = "Transactions", description = "Operações financeiras: depósito, saque, transferência e extrato")
 public class TransactionController {
 
-    private final DepositUseCase depositUseCase;
-    private final WithdrawUseCase withdrawUseCase;
-    private final TransferUseCase transferUseCase;
+    private final OperationExecutionStrategy strategy;
     private final GetStatementUseCase getStatementUseCase;
     private final GetOperationReceiptUseCase getOperationReceiptUseCase;
 
@@ -52,7 +51,11 @@ public class TransactionController {
     public ResponseEntity<OperationResponse> deposit(
             @RequestBody @Valid DepositRequest request
     ) {
-        return ResponseEntity.ok(depositUseCase.execute(request));
+        strategy.deposit(request);
+        return ResponseEntity.ok(OperationResponse.builder()
+                .message("Deposit completed successfully.")
+                .balance(request.amount())
+                .build());
     }
 
     @Operation(
@@ -68,7 +71,11 @@ public class TransactionController {
     public ResponseEntity<OperationResponse> withdraw(
             @RequestBody @Valid WithdrawRequest request
     ) {
-        return ResponseEntity.ok(withdrawUseCase.execute(request));
+        strategy.withdraw(request);
+        return ResponseEntity.ok(OperationResponse.builder()
+                .message("Withdrawal completed successfully.")
+                .balance(request.amount())
+                .build());
     }
 
     @Operation(
@@ -84,7 +91,11 @@ public class TransactionController {
     public ResponseEntity<OperationResponse> transfer(
             @RequestBody @Valid TransferRequest request
     ) {
-        return ResponseEntity.ok(transferUseCase.execute(request));
+        strategy.transfer(request);
+        return ResponseEntity.ok(OperationResponse.builder()
+                .message("Transfer completed successfully.")
+                .balance(request.amount())
+                .build());
     }
 
     @Operation(

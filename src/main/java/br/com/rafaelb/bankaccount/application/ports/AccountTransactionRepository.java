@@ -1,19 +1,21 @@
-package br.com.rafaelb.bankaccount.domain.repository;
+package br.com.rafaelb.bankaccount.application.ports;
 
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
-import org.springframework.data.jpa.repository.JpaRepository;
-import org.springframework.stereotype.Repository;
 
 import java.time.Instant;
 import java.util.List;
+import java.util.Optional;
 import java.util.UUID;
 
-@Repository
-public interface AccountTransactionRepository extends JpaRepository<AccountTransaction, Long> {
+public interface AccountTransactionRepository {
+
+    AccountTransaction save(AccountTransaction transaction);
+
+    Optional<AccountTransaction> findById(Long id);
 
     Page<AccountTransaction> findByAccountId(
             Long accountId,

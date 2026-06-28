@@ -1,12 +1,12 @@
 package br.com.rafaelb.bankaccount.application;
 
 import br.com.rafaelb.bankaccount.application.dto.request.WithdrawRequest;
+import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
+import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.application.usecase.WithdrawUseCase;
 import br.com.rafaelb.bankaccount.domain.exception.InsufficientFundsException;
 import br.com.rafaelb.bankaccount.domain.exception.InvalidAmountException;
 import br.com.rafaelb.bankaccount.domain.model.Account;
-import br.com.rafaelb.bankaccount.domain.repository.AccountRepository;
-import br.com.rafaelb.bankaccount.domain.repository.AccountTransactionRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

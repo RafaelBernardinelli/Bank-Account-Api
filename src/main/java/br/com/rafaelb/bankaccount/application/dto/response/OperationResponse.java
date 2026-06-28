@@ -7,7 +7,6 @@ import java.util.UUID;
 
 @Builder
 public record OperationResponse(
-        UUID operationId,
         BigDecimal balance,
         String message
 ) {}

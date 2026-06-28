@@ -1,18 +1,16 @@
 package br.com.rafaelb.bankaccount.application.usecase;
 
 import br.com.rafaelb.bankaccount.application.dto.request.WithdrawRequest;
-import br.com.rafaelb.bankaccount.application.dto.response.OperationResponse;
 import br.com.rafaelb.bankaccount.application.exception.AccountNotFoundException;
+import br.com.rafaelb.bankaccount.application.ports.AccountRepository;
+import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
-import br.com.rafaelb.bankaccount.domain.repository.AccountRepository;
-import br.com.rafaelb.bankaccount.domain.repository.AccountTransactionRepository;
 import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.math.BigDecimal;
 import java.util.UUID;
 
 @Service
@@ -23,7 +21,7 @@ public class WithdrawUseCase {
     private final AccountTransactionRepository transactionRepository;
 
     @Transactional
-    public OperationResponse execute(WithdrawRequest request) {
+    public void execute(WithdrawRequest request) {
 
         Account account = accountRepository.findByIdForUpdate(request.accountId())
                 .orElseThrow(() -> new AccountNotFoundException("Account not found."));
@@ -41,11 +39,5 @@ public class WithdrawUseCase {
         );
 
         transactionRepository.save(accountTransaction);
-
-        return OperationResponse.builder()
-                .operationId(operationID)
-                .balance(account.getBalance())
-                .message("Withdrawal completed successfully.")
-                .build();
     }
 }

@@ -5,11 +5,15 @@ import br.com.rafaelb.bankaccount.domain.exception.InsufficientFundsException;
 import br.com.rafaelb.bankaccount.domain.exception.InvalidAmountException;
 import br.com.rafaelb.bankaccount.domain.model.Account;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.math.BigDecimal;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+@SpringBootTest
+@ActiveProfiles("test")
 class AccountTest {
 
     @Test

@@ -4,9 +4,9 @@ import br.com.rafaelb.bankaccount.application.dto.response.OperationReceiptRespo
 import br.com.rafaelb.bankaccount.application.dto.response.TransactionResponse;
 import br.com.rafaelb.bankaccount.application.exception.OperationNotFoundException;
 import br.com.rafaelb.bankaccount.application.mapper.AccountTransactionMapper;
+import br.com.rafaelb.bankaccount.application.ports.AccountTransactionRepository;
 import br.com.rafaelb.bankaccount.domain.enums.TransactionType;
 import br.com.rafaelb.bankaccount.domain.model.AccountTransaction;
-import br.com.rafaelb.bankaccount.domain.repository.AccountTransactionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
