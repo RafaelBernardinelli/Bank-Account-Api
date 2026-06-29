@@ -631,14 +631,6 @@ As implementações concretas de persistência e mensageria permanecem na camada
 
 ---
 
-## Repository Pattern
-
-O acesso aos dados ocorre através de contratos definidos no domínio e implementados pela infraestrutura.
-
-Dessa forma, os casos de uso permanecem desacoplados do Spring Data JPA.
-
----
-
 ## Domain-Driven Design
 
 As entidades encapsulam seu próprio comportamento.
