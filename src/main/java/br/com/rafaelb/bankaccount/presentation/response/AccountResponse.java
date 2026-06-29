@@ -20,7 +20,7 @@ public record AccountResponse(
         @Schema(description = "O cpf/cpnj do titular da conta.", example = "012.123.456-30")
         String holderDocument,
 
-        @Schema(description = "O saldo atual da conta bancária.", example = "1000.00")
+        @Schema(description = "O saldo atual da conta bancária.", example = "0.00")
         BigDecimal balance,
 
         @Schema(description = "O status atual da conta bancária (ACTIVE, INACTIVE, CLOSED).", example = "ACTIVE")

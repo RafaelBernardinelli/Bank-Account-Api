@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/accounts")
 @RequiredArgsConstructor
-@Tag(name = "Accounts", description = "Operações relacionadas a contas bancárias")
+@Tag(name = "Accounts", description = "Operações relacionadas a criação de contas bancárias")
 public class AccountController {
 
     private final CreateAccountUseCase createAccountUseCase;

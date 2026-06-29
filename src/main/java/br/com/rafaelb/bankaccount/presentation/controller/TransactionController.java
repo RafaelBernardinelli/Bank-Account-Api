@@ -22,8 +22,6 @@ import org.springframework.web.bind.annotation.*;
 public class TransactionController {
 
     private final OperationExecutionStrategy strategy;
-    private final GetStatementUseCase getStatementUseCase;
-    private final GetTransactionDetailsUseCase getTransactionDetailsUseCase;
 
     @Operation(
             summary = "Realizar depósito",
