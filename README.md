@@ -938,7 +938,6 @@ Os testes foram organizados em diferentes níveis da aplicação:
 |---------------|----------|
 | Unitários | Validar regras de negócio das entidades e casos de uso |
 | Integração | Validar integração entre aplicação e banco de dados |
-| Controllers | Validar os endpoints expostos pela API |
 
 Os testes contemplam cenários como:
 
