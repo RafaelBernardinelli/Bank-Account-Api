@@ -750,7 +750,7 @@ O projeto possui suporte à execução utilizando Docker.
 Após gerar o artefato da aplicação:
 
 ```bash
-mvn clean package
+mvn clean package -DskipTests
 ```
 
 Execute:
