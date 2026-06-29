@@ -172,7 +172,8 @@ Ela não contém regras de negócio.
 presentation
 ├── controller
 ├── request
-└── response
+├── response
+└── validation
 ```
 
 ### Responsabilidades
@@ -226,8 +227,7 @@ As entidades encapsulam seu próprio comportamento, evitando que regras crítica
 domain
 ├── enums
 ├── exception
-├── model
-└── repository
+└── model
 ```
 
 ### Responsabilidades
@@ -270,7 +270,6 @@ infrastructure
 ├── messaging
 │   └── kafka
 ├── persistence
-└── validation
 ```
 
 ### Responsabilidades
@@ -986,7 +985,6 @@ Embora o projeto atenda aos requisitos propostos para o desafio técnico, divers
 ## Segurança
 
 - Autenticação utilizando OAuth2 / JWT.
-- Controle de acesso baseado em perfis (RBAC).
 - Rate Limiting.
 - Auditoria de autenticação.
 
@@ -995,8 +993,6 @@ Embora o projeto atenda aos requisitos propostos para o desafio técnico, divers
 - Pipeline CI/CD.
 - Deploy automatizado em Kubernetes.
 - Health Checks avançados.
-- Estratégias de Rolling Update e Blue/Green Deployment.
-- Gerenciamento de segredos utilizando Vault ou Kubernetes Secrets.
 
 ---
 
