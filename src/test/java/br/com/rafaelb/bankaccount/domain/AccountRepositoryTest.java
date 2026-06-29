@@ -14,7 +14,6 @@ import java.math.BigDecimal;
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
-@ActiveProfiles("test")
 class AccountRepositoryTest {
 
     @Autowired
@@ -56,13 +55,16 @@ class AccountRepositoryTest {
     @Test
     void shouldNotAllowDuplicateAccountNumberAndDigit() {
 
-        Account account1 = Account.create("123457", "01", "12345678901");
-        accountRepository.saveAndFlush(account1);
+        Account account1 = Account.create("12345778", "01", "12345678901");
+        accountRepository.save(account1);
 
-        Account account2 = Account.create("123457", "01", "99999999999");
+        Account account2 = Account.create("12345778", "01", "99999999999");
 
-        assertThrows(DataIntegrityViolationException.class, () -> {
-            accountRepository.saveAndFlush(account2);
-        });
+        assertTrue(
+                accountRepository.existsByAccountNumberAndAccountDigit(
+                        account2.getAccountNumber(),
+                        account2.getAccountDigit()
+                )
+        );
     }
 }

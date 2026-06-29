@@ -57,6 +57,18 @@ public class Account {
     private Long version;
 
     public static Account create(String number, String digit, String document) {
+        if (number == null || number.isBlank()) {
+            throw new IllegalArgumentException("Account number is required.");
+        }
+
+        if (digit == null || digit.isBlank()) {
+            throw new IllegalArgumentException("Account digit is required.");
+        }
+
+        if (document == null || document.isBlank()) {
+            throw new IllegalArgumentException("Holder document is required.");
+        }
+
         Account account = new Account();
         account.accountNumber = number;
         account.accountDigit = digit;
