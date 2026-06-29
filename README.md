@@ -39,11 +39,13 @@ A API disponibiliza os seguintes serviços:
 
 # Arquitetura
 
-A aplicação Bank Account API foi projetada para rodar localmente e também em um ambiente containerizado utilizando Kubernetes, com suporte a auto scaling (HPA) e persistência em banco de dados PostgreSQL.
+A aplicação Bank Account API foi projetada para rodar localmente e também foi realizado testes em um ambiente containerizado utilizando Kubernetes, com suporte a auto scaling (HPA) e persistência em banco de dados PostgreSQL.
 
-A imagem abaixo ilustra a arquitetura base do sistema:
+A imagem abaixo ilustra a arquitetura ideal base do sistema:
 
-<img width="861" height="471" alt="Diagrama novo drawio" src="https://github.com/user-attachments/assets/ead7b960-7f7e-4702-9ad1-1188513d10cb" />
+<img width="861" height="501" alt="Diagrama teste tecnico novo drawio (2)" src="https://github.com/user-attachments/assets/6379fd17-3d72-46fd-b145-1fe4c8fad5a1" />
+
+
 
 
 
