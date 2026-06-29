@@ -8,8 +8,6 @@ public interface AccountRepository {
 
     Account save(Account account);
 
-    Account saveAndFlush(Account account);
-
     Optional<Account> findById(Long id);
 
     Optional<Account> findByIdForUpdate(Long id);

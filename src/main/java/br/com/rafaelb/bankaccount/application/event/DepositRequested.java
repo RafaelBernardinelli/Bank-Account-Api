@@ -8,7 +8,6 @@ import java.math.BigDecimal;
 import java.util.UUID;
 
 @Getter
-
 @AllArgsConstructor
 @NoArgsConstructor
 public class DepositRequested implements OperationEvent {

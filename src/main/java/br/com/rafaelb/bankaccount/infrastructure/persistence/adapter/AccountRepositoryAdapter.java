@@ -20,11 +20,6 @@ public class AccountRepositoryAdapter implements AccountRepository {
     }
 
     @Override
-    public Account saveAndFlush(Account account) {
-        return repository.saveAndFlush(account);
-    }
-
-    @Override
     public Optional<Account> findById(Long id) {
         return repository.findById(id);
     }

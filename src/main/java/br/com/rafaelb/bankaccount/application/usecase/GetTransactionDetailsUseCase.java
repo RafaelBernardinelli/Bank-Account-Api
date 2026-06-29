@@ -37,16 +37,9 @@ public class GetTransactionDetailsUseCase {
                         .map(accountTransactionMapper::toTransactionResponse)
                         .toList();
 
-        TransactionType type = transactions.getFirst().getTransactionType();
-
-        BigDecimal totalAmount = transactions.stream()
-                .map(AccountTransaction::getAmount)
-                .reduce(BigDecimal.ZERO, BigDecimal::add);
-
         return TransactionDetailsResponse.builder()
                 .operationId(operationId)
-                .operationType(type)
-                .totalAmount(totalAmount)
+                .operationType(TransactionType.TRANSFER)
                 .createdAt(transactions.getFirst().getCreatedAt())
                 .transactions(items)
                 .build();

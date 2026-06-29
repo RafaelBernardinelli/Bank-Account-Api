@@ -15,11 +15,11 @@ public class StrategyConfiguration {
     @Primary
     public OperationExecutionStrategy operationExecutionStrategy(
             SyncOperationExecutionStrategy syncStrategy,
-            AsyncOperationExecutionStrategy kafkaStrategy,
+            AsyncOperationExecutionStrategy asyncStrategy,
             @Value("${bank.operation.mode}") String mode) {
 
         return switch (mode.toLowerCase()) {
-            case "kafka" -> kafkaStrategy;
+            case "async" -> asyncStrategy;
             case "sync" -> syncStrategy;
             default -> throw new IllegalArgumentException(
                     "Unsupported operation mode: " + mode);
