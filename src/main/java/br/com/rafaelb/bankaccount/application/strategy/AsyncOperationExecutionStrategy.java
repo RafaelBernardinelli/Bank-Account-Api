@@ -15,7 +15,7 @@ import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
-public class KafkaOperationExecutionStrategy implements OperationExecutionStrategy {
+public class AsyncOperationExecutionStrategy implements OperationExecutionStrategy {
 
     private final OperationPublisher publisher;
 

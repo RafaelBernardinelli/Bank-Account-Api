@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.infrastructure.configuration;
 
-import br.com.rafaelb.bankaccount.application.strategy.KafkaOperationExecutionStrategy;
+import br.com.rafaelb.bankaccount.application.strategy.AsyncOperationExecutionStrategy;
 import br.com.rafaelb.bankaccount.application.strategy.OperationExecutionStrategy;
 import br.com.rafaelb.bankaccount.application.strategy.SyncOperationExecutionStrategy;
 import org.springframework.beans.factory.annotation.Value;
@@ -15,7 +15,7 @@ public class StrategyConfiguration {
     @Primary
     public OperationExecutionStrategy operationExecutionStrategy(
             SyncOperationExecutionStrategy syncStrategy,
-            KafkaOperationExecutionStrategy kafkaStrategy,
+            AsyncOperationExecutionStrategy kafkaStrategy,
             @Value("${bank.operation.mode}") String mode) {
 
         return switch (mode.toLowerCase()) {

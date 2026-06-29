@@ -1,4 +1,4 @@
-package br.com.rafaelb.bankaccount.infrastructure.validation;
+package br.com.rafaelb.bankaccount.presentation.validation;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;

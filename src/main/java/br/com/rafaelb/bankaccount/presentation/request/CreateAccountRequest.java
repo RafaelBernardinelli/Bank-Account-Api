@@ -1,6 +1,6 @@
 package br.com.rafaelb.bankaccount.presentation.request;
 
-import br.com.rafaelb.bankaccount.infrastructure.validation.CPF;
+import br.com.rafaelb.bankaccount.presentation.validation.CPF;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
@@ -18,7 +18,7 @@ public record CreateAccountRequest(
         @Size(max = 2)
         String accountDigit,
 
-        @Schema(description = "O cpf/cpnj do titular da conta.", example = "012.123.456-30")
+        @Schema(description = "O cpf do titular da conta.", example = "012.123.456-30")
         @NotBlank
         @Size(min = 11, max = 14)
         @CPF
