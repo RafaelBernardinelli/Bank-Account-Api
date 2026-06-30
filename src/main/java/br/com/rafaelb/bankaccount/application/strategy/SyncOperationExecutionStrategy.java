@@ -28,7 +28,6 @@ public class SyncOperationExecutionStrategy implements OperationExecutionStrateg
         return OperationResponse.builder()
                 .operationId(operationId)
                 .message("Deposit completed successfully.")
-                .balance(request.amount())
                 .build();
     }
 
@@ -41,7 +40,6 @@ public class SyncOperationExecutionStrategy implements OperationExecutionStrateg
         return OperationResponse.builder()
                 .operationId(operationId)
                 .message("Withdrawal completed successfully.")
-                .balance(request.amount())
                 .build();
     }
 
@@ -53,8 +51,7 @@ public class SyncOperationExecutionStrategy implements OperationExecutionStrateg
 
         return OperationResponse.builder()
                 .operationId(operationId)
-                .message("Withdrawal completed successfully.")
-                .balance(request.amount())
+                .message("Transfer completed successfully.")
                 .build();
     }
 }

@@ -10,6 +10,5 @@ import java.util.UUID;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public record OperationResponse(
         UUID operationId,
-        BigDecimal balance,
         String message
 ) {}
