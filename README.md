@@ -750,7 +750,7 @@ Execute:
 docker build -t bank-account-api:latest .
 ```
 
-ou utilizando Docker Compose:
+E Docker Compose:
 
 ```bash
 docker compose up
