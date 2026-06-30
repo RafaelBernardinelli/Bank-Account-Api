@@ -956,8 +956,6 @@ Embora o projeto atenda aos requisitos propostos para o desafio técnico, divers
 ## Arquitetura
 
 - Separação completa entre Domain Model e Persistence Entity, eliminando dependências do JPA na camada de domínio.
-- Implementação do padrão Outbox para publicação confiável de eventos.
-- Introdução de CQRS para separação entre escrita e leitura.
 - Versionamento da API.
 
 ## Mensageria
