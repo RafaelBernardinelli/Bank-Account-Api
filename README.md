@@ -937,7 +937,7 @@ Os testes contemplam cenários como:
 - ✅ Saques
 - ✅ Transferências
 - ✅ Consulta de extrato
-- ✅ Consulta de comprovantes
+- ✅ Consulta de uma transação
 - ✅ Validações de negócio
 - ✅ Tratamento de exceções
 
